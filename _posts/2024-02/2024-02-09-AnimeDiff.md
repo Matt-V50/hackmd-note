@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Deep Image Blend"
+title:  "AnimeDiff"
 date:   "2024-02-09 18:07:54 +0800"
 categories: AI 3d
 header:
