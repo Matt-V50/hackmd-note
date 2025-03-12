@@ -16,7 +16,7 @@ jobs:
         with:
           ruby-version: 2.7
       - name: 💾 Cache 
-        uses: actions/cache@v2  # This action allows caching dependencies and build outputs to improve workflow execution time.
+        uses: actions/cache@v3  # This action allows caching dependencies and build outputs to improve workflow execution time.
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
