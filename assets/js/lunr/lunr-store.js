@@ -719,7 +719,7 @@ var store = [{
         "url": "/ai/3d/pytorch-%E6%89%A9%E5%B1%95-%E5%AE%89%E8%A3%85/",
         "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20231112150600.png"
       },{
-        "title": "Deep Image Blend",
+        "title": "AnimeDiff",
         "excerpt":"   Deep Image Blend                   针对泊松融合的局限性，作者提出了Deep Image Blend                    泊松融合主要是参考融合边界处的像素信息，进行梯度最小的优化融合算法。                       本论文主要联合优化了3种不同的损失                    泊松融合损失、风格损失和内容损失           风格损失合内容损失主要引入VGG的风格化向量           通过迭代的方法保证了边界的过度                       论文还涉及了正则化损失，包括直方图损失和总变差损失，以提高图像的平滑度和稳定风格转换。          ","categories": ["AI","3d"],
         "tags": [],
         "url": "/ai/3d/AnimeDiff/",
@@ -738,8 +738,62 @@ var store = [{
         "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240209185739.png"
       },{
         "title": "Sora: The paper you need to read",
-        "excerpt":"Papers Dall-e 3 Improving Image Captioning with Better Use of Captions Dalle-3论文阅读 - nlpcver的文章 - 知乎 Vq-vae Neural Discrete Representation Learning DiT Scalable Diffusion Models with Transformers Generating Long Videos of Dynamic Scenes VideoGPT: Video Generation using VQ-VAE and Transformer Imagen Video: High Definition Video Generation with Diffusion Models Align...","categories": ["AI","3d"],
+        "excerpt":"Papers Dall-e 3 Improving Image Captioning with Better Use of Captions Improving Image Generation with Better Captions - dalle3 Dalle-3论文阅读 - nlpcver的文章 - 知乎 Vq-vae Neural Discrete Representation Learning DiT Scalable Diffusion Models with Transformers Generating Long Videos of Dynamic Scenes VideoGPT: Video Generation using VQ-VAE and Transformer Imagen Video:...","categories": ["AI","3d"],
         "tags": [],
         "url": "/ai/3d/Sora/",
         "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240209185739.png"
+      },{
+        "title": "OpenClip",
+        "excerpt":"OpenClip, 对齐文本和图像的隐空间 OpenClip 对比学习 对比学习(Contrastive Learning)是一种自监督学习方法,旨在学习数据的通用表示,以便在下游任务中可以更好地利用这些表示。其核心思想是通过最大化相似样本对之间的相似度,同时最小化不相似样本对之间的相似度,来学习数据的特征表示。具体而言: 正样本对:对同一实例的两个随机增强版本(如图像的裁剪、翻转、颜色变化等)构成正样本对,模型需要学习将它们的特征表示拉近。 负样本对:将不同实例的特征表示作为负样本对,模型需要将它们的特征表示拉远。 对比损失:通过一个对比损失函数(如InfoNCE损失)来优化上述目标,使相似样本对的特征表示相近,不相似样本对的特征表示相异。 常见的对比损失函数 InfoNCE损失(Information Noise-Contrastive Estimation): InfoNCE损失源自NCE (Noise-Contrastive Estimation),是一种常用的对比损失函数。对于一个正样本对(i,j),InfoNCE损失定义为: $L_{i,j} = -\\log \\frac{\\exp(sim(z_i,z_j)/\\tau)}{\\sum_{k=1}^N \\exp(sim(z_i,z_k)/\\tau)}$ 其中,$z_i$和$z_j$是正样本对的特征表示,$z_k$是负样本的特征表示,$sim$是相似度度量(如点积),$\\tau$是温度超参数,N是负样本的数量。 Triplet损失(Triplet Loss): Triplet损失通过构建三元组(anchor, positive, negative)来优化样本间的相对距离。其目标是anchor与positive之间的距离小于anchor与negative之间的距离。数学表达为: $L = \\max(d(a,p) - d(a,n) + \\mathit{margin}, 0)$ 其中,$d$是距离度量(如欧氏距离),$\\mathit{margin}$是一个正的边界值。 NT-Xent损失(Normalized Temperature-scaled Cross Entropy Loss): NT-Xent损失是SimCLR中使用的损失函数,类似于InfoNCE损失,但进行了标准化和对称化处理。对于一对正样本(i,j),NT-Xent损失定义为: $l_{i,j} = -\\log \\frac{\\exp(sim(z_i,z_j)/\\tau)}{\\sum_{k=1}^{2N} \\mathbf{1}{[k \\neq i]} \\exp(sim(z_i,z_k)/\\tau)}$...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/OpenClip/",
+        "teaser": "https://raw.githubusercontent.com/mlfoundations/open_clip/main/docs/CLIP.png"
+      },{
+        "title": "VQ-VAE",
+        "excerpt":"VQ-VAE Model Stage-1 (latent space learning) Latent Space Stage-2 (prior learning) VQ-VAE VQ-VAE Discrete (after quantization) Autoregressive PixelCNN VQGAN VQGAN (VQ-VAE + GAN + Perceptual Loss) Discrete (after quantization) Autoregressive GPT-2 (Transformer) VQ-Diffusion VQ-VAE Discrete (after quantization) Discrete Diffusion Latent Diffusion (VQ-reg) VAE or VQGAN Continuous (before quantization) Continuous Diffusion...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/VQ-VAE/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240326221537.png"
+      },{
+        "title": "Dalle3",
+        "excerpt":"Dalle3 Improving Image Generation with Better Captions - dalle3 关于生成模型 基础模型:先在图文对数据集上预训练了一个类似于语言模型的图像描述生成器。输入为图像的CLIP编码和已生成的字符,输出为下一个字符的概率分布。这样模型就学会了根据图像内容生成与之匹配的描述文本。 短句微调:在此基础上,作者又准备了一个小规模的数据集,其中的描述只关注图像的主要内容。用这个数据集微调上一步的模型,使其倾向于生成简洁的描述文本。这一步得到的模型被称为”short synthetic captions”。 长句微调:类似地,作者再准备一个小规模的长描述数据集,其中的描述不仅涉及图像主体,还包含了背景、数量、颜色等丰富的细节。再次用这个数据集微调,得到的模型称为”descriptive synthetic captions”,可以生成详尽的描述。 关于提高文本到图像生成系统能力 现有的文本到图像模型在跟随详细的图像描述指令方面存在困难,经常会忽略或混淆文字中的含义。作者认为这个问题源自训练数据中的图像描述文本质量较差,存在噪声和不准确性。 为了解决这个问题,作者训练了一个定制的图像描述生成模型,用它重新为训练图像生成了更详细、准确的人工描述文本。然后用这些高质量的合成描述来训练文本到图像模型。 实验结果表明,用合成的描述训练可以显著提高模型对输入文本的理解和表达能力。基于这个发现,作者构建了一个新的系统DALL-E 3。 在对DALL-E 3进行评估时,考察了它在理解指令、生成连贯图像、图像美感等方面的表现,结果优于目前的一些竞争模型。作者还公开了评估所用的样本和代码,以推动后续研究进一步优化文本到图像模型的这些重要能力。 论文还讨论了当前方法的局限性,例如DALL-E 3在空间感知、生成文本、理解特定概念等方面仍有不足,未来可通过改进图像描述生成器等方式来提升。同时还分析了系统可能带来的风险,并在附录中详细阐述了安全性和偏差的缓解措施。 使用的文本编辑器 T5 (Text-to-Text Transfer Transformer) 即过度拟合数据集中的分布规律。 Likelihood models like our text-to-image diffusion models have a notorious tendency to overfit to distributional regularities in the...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/Dalle3/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240329142726.png"
+      },{
+        "title": "Dalle3",
+        "excerpt":"   Dit   ","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/Dit/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240329150229.png"
+      },{
+        "title": "A Dataset and Explorer for 3D Signed Distance Functions",
+        "excerpt":"   A Dataset and Explorer for 3D Signed Distance Functions      主要贡献            一个python和c++结合的shader渲染器，包含glsl       讨论了sdf的好处                    其中讨论了Eikonal equation和Lipschitz constant           讨论了一些sdf的CSG操作           讨论了一下sdf在ray-matching上的好处                       主要整理了一下几个基于sdf的数据集          ","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/SDF-McGuire/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240409201627.png"
+      },{
+        "title": "Unsigned Orthogonal Distance Fields: An Accurate Neural Implicit Representation for Diverse 3D Shapes",
+        "excerpt":"Unsigned Orthogonal Distance Fields: An Accurate Neural Implicit Representation for Diverse 3D Shapes 主要贡献 UODFs定义为沿三个正交方向(左右、前后、上下)的无符号距离场。每个空间点的UODFs值表示该点沿三个正交方向到形状表面的最短距离。 UODFs有三个主要特点: 由三个正交方向的无符号距离场组成 每个点的UODFs在每个正交方向上的一维导数绝对值等于1 相邻射线之间的UODFs值可能不连续 使用三个MLP神经网络分别拟合三个正交方向的UODFs。对每个射线等间隔采样点,每个采样点可直接估计其最近的表面点。 提出了一种从多个采样点估计表面点的方法,可以消除插值误差,只受神经网络拟合误差影响。最后融合三个方向估计的表面点得到最终结果。 在各种3D模型(封闭、开放、多层、组装等)上进行实验,UODFs的重建精度显著优于SDF、UDF等其他隐式表示方法,尤其是开放曲面和小尺寸点云重建。 NC-SDF: Enhancing Indoor Scene Reconstruction Using Neural SDFs with View-Dependent Normal Compensation 提出了一种视角相关的法向补偿模型(view-dependent normal compensation model),用于解决单目几何先验在多视角下的不一致性问题。通过将法向先验中视角相关的偏差显式建模到场景的隐式表示中,并自适应地学习和校正这些偏差,可以有效缓解不一致监督带来的负面影响,提高重建的全局一致性和局部细节。 解决单目几何先验(尤其是法向先验)在多视角下不一致的问题 在之前的方法中,研究者通常直接将预测的单目法向图作为监督信号,引导隐式场景表示的优化。然而,由于预测网络是在单视角下进行估计的,所以预测的法向图往往与场景的真实法向不完全一致,并且这种偏差具有视角相关性。当多个视角的法向预测结果存在不一致时,会给隐式表示的优化带来困难,导致重建质量下降。 为了解决这个问题,论文提出将每个视角的法向偏差也建模到场景的隐式表示中。具体来说,他们设计了一个法向补偿模型,以视角方向为输入,预测对应视角下的法向补偿旋转角度。通过将这个旋转作用在隐式表示的法向上,就得到了经过补偿的法向。优化时,渲染得到的补偿后法向图与单目法向预测结果对齐,而不是直接用隐式表示的法向。 在训练过程中,法向补偿模型与颜色模型和几何模型一起联合优化。这种方式可以自适应地学习和校正不同视角下的法向偏差,使隐式表示更加鲁棒,从而提高重建质量。可视化结果表明,通过法向补偿,最终渲染得到的法向图与颜色图在不同视角下都更加一致,证明该模型能有效建模视角相关的法向偏差。 设计了一种信息量丰富的像素采样策略,通过优先采样信息量高的像素,使模型更加关注复杂的几何细节。 提出了一种基于特征融合的混合几何建模方法,利用MLP的感应平滑性来确保平滑表面,同时利用体素网格提供的高频编码来捕捉精细几何。 ClusteringSDF: Self-Organized Neural Implicit Surfaces for...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/Unsigned-Orthogonal-Distance-Fields-UODF/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240512235923.png"
+      },{
+        "title": "AnySyn3D Paper sets",
+        "excerpt":"CLAY: A Controllable Large-scale Generative Model for Creating High-quality 3D Assets 主要贡献 CLAY的核心是一个在大规模3D数据上预训练的1.5亿参数的生成模型。该模型使用多分辨率VAE对几何形状进行编码,并用一个极简的latent diffusion transformer进行几何生成。 将多分辨率VAE和极简的latent diffusion transformer结合,并在1.5亿参数量级上实现了模型的高效训练 为了训练该大规模模型,作者提出了一个数据标准化流程,包括重新网格化来统一不同来源的3D数据格式,以及利用GPT-4V对数据自动标注。 统一重新网格化和利用GPT-4V进行自动语义标注 在几何生成的基础上,CLAY还可以合成PBR材质贴图,实现逼真的渲染效果。作者训练了一个多视角材质扩散模型来高效地生成高分辨率的漫反射、粗糙度等贴图。 CLAY支持低秩适应(LoRA)微调以及多种条件生成,可以根据草图、体素、包围盒、点云等多种输入控制生成。 SketchDream: Sketch-based Text-to-3D Generation and Editing 同时使用单视角手绘草图和文本提示作为输入,生成高质量3D模型的端到端系统。生成的结果既能忠实于输入的草图,也能满足文本的描述。 利用深度引导的扭曲策略来建立视角间的空间对应关系,并使用3D注意力模块来确保不同视角下生成图像的3D一致性 粗到精的两阶段编辑框架 支持对重建或生成的NeRF进行局部细节编辑 并采用3D注意力控制模块确保3D一致性 对于新视角图像,最近视角的输入是通过深度扭曲得到的草图,其他视角的输入是空白图像。为了确保不同视角下生成图像的3D一致性,该模块采用了MVDream中的3D注意力机制 Direct3D: Scalable Image-to-3D Generation via 3D Latent Diffusion Transformer 提出了D3D-VAE模型,可以将高分辨率的点云编码到一个紧致的3D latent空间中。不同于以往方法使用渲染图像作为监督信号,D3D-VAE直接对解码后的几何形状进行监督,采用了半连续的表面采样策略,更好地保留了3D形状的细节 在D3D-VAE中,编码器将点云压缩到三平面latent空间,解码器再将低分辨率的latent表示上采样到高分辨率的三平面特征图,最后通过可学习的MLP将三个特征图映射为occupancy场,以重建3D形状。 提出了D3D-DiT扩散模型,可以根据输入的参考图像在3D latent空间中生成与之一致的3D模型。D3D-DiT专门设计了像素级和语义级两个层面的图像对齐模块,使生成的3D模型能在局部细节和整体语义上与输入图像保持一致。 采用了显式的triplane latent表示,比隐式编码更利于3D信息的保留;提出的像素级和语义级图像条件对齐模块有助于提升3D生成的细节和一致性。...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/AnySyn3D-Paper-sets/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240701120650.png"
+      },{
+        "title": "Nerf and 3DGS",
+        "excerpt":"Trans-LoRA: towards data-free Transferable Parameter Efficient Finetuning The main contributions of this method are: It use a Discriminator module to fit the distribution of task data to reduce data transfer. This training process of lora for new base model is simplified. Problems This method mainly focus on the transfer between...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/nerf-and-3dgs/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240701120650.png"
+      },{
+        "title": "FruitNerf",
+        "excerpt":"FruitNeRF: A Unified Neural Radiance Field based Fruit Counting Framework The main idea of this paper is to use segmentation result from SAM or GroundingDINO to generate another neural radiance field to point out the fruit in 3d space. Then use the high light point to count fruit with point...","categories": ["AI","3d"],
+        "tags": [],
+        "url": "/ai/3d/fruit-nerf/",
+        "teaser": "https://raw.githubusercontent.com/FavorMylikes/hackmd-note/img/img20240701120650.png"
       }]
